@@ -1,0 +1,157 @@
+<md-content layout-padding>
+    <div ng-init="init()">
+
+       <div ng-show="isLoggedIn()">
+            <md-content>
+
+            <div layout="row" layout-align="start center" class="list-item">
+               <div flex="10"></div>
+               <div flex="70">
+                 <md-input-container class="md-block">
+                    <label>Type Instagram username</label>
+                    <input ng-model="username">
+                 </md-input-container>
+               </div>
+               <div flex="20">
+                  <md-button ng-click="search()">
+                      Search
+                  </md-button>
+               </div>               
+            </div>
+
+             <div layout="row" layout-align="center start" style="margin-bottom: 50px;">
+                  <div flex="80">
+                    <md-grid-list
+                              md-cols-xs="2" md-cols-sm="3" md-cols-md="4" md-cols-gt-md="5"
+                              md-row-height-gt-md="4:5" md-row-height="4:5"
+                              md-gutter="20px" md-gutter-gt-sm="30px" ng-repeat="user in travelers">
+                        <md-grid-tile 
+                            md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1" ng-repeat="destination in user.destinations" class="tile-card">     
+                          <figure style="display: block;">  
+                            <div layout="column" layout-align="start start">
+                              <div class="tile-figure">
+                                  <div class="tile-figure-container">
+                                    <div class="figure-header">
+                                         <div layout="row" layout-align="space-between">
+                                            <div class="md-body-2" style="font-weight: 900; padding: 10px; line-height: 14px; letter-spacing: 0em; font-size: 12px;">{{user.username}}</div>
+                                            <img class="md-user-avatar" ng-src="{{user.profile_picture}}"/>
+                                         </div>
+                                    </div>                           
+                                    <img ng-src="{{getDestinationMapUrl(destination, 320, 320)}}">
+                                  </div>
+                              </div>                                           
+                              <div class="tile-footer">
+                                    <div class="md-title">{{destination[0].names[0].name}}</div>
+                                    <div class="md-subhead">{{destination[0].period.name}}</div>
+                              </div>
+                            </div>
+                          </figure>
+                        </md-grid-tile>
+                    </md-grid-list> 
+                  </div>
+                </div>
+
+                <div layout="row" layout-align="start center" ng-repeat="user in users" class="list-item">
+                      <div flex="10"></div>
+                      <div flex="20">
+                         <div layout="row" layout-align="start center">
+                            <div style="margin-right: 10px">
+                              <img class="toolbar-user-avatar" ng-src="{{user.profile_picture}}"/>
+                            </div>
+                            <div layout="column">
+                              <div class="md-body-2">{{user.username}}</div>
+                              <div class="md-body-1">{{user.full_name}}</div>
+                            </div>
+                         </div>                                                
+                      </div>                  
+                      <div flex="50" layout-align="center center">                    
+                      </div>
+                      <div flex="20">
+                        <md-button ng-click="getUserData(user)">
+                        Load
+                        </md-button>                      
+                      </div>                      
+                </div>
+
+
+                <div layout="row" layout-align="start center" ng-repeat="user in travelers" class="list-item">
+                      <div flex="10"></div>
+                      <div flex="20">
+                         <div layout="row" layout-align="start center">
+                            <div style="margin-right: 10px">
+                              <img class="toolbar-user-avatar" ng-src="{{user.profile_picture}}"/>
+                            </div>
+                            <div layout="column">
+                              <div class="md-body-2">{{user.username}}</div>
+                              <div class="md-body-1">{{user.full_name}}</div>
+                            </div>
+                         </div>                                                
+                      </div>                  
+                      <div flex="50" layout-align="center center">
+                         <div class="md-body-1" ng-if="user.analyzing">Loading mementos...</div>
+                           <div class="chip" ng-repeat="destination in user.destinations">{{destination[0].names[0].name}}</div>
+                      </div>
+                      <div flex="20" layout-align="center center">                    
+                        <md-button class="md-raised md-accent" ui-sref="user({userId: user.id, userName: user.username})" ng-if="user.loaded && !user.analyzing">
+                        Maps
+                        </md-button>       
+                        <div style="margin-left: 20px">
+                          <md-progress-circular class="md-accent" ng-if="!user.loaded && user.analyzing" md-mode="determinate" value="{{user.loadedMedia/user.profile.counts.media*100}}"></md-progress-circular>
+                        </div>
+                      </div>
+                </div>
+
+                <div layout="row" layout-align="start end" ng-repeat="user in follows" class="list-item">
+                    <div flex="10"></div>
+                    <div flex="20">
+                       <div layout="row" layout-align="start center">
+                          <div style="margin-right: 10px">
+                            <img class="toolbar-user-avatar" ng-src="{{user.profile_picture}}"/>
+                          </div>
+                          <div layout="column">
+                            <div class="md-body-2">{{user.username}}</div>
+                            <div class="md-body-1">{{user.full_name}}</div>
+                          </div>
+                       </div>                                                
+                    </div>                  
+                    <div flex="50" layout-align="center center">
+                    </div>
+                    <div flex="20">
+                      <md-button ng-click="getUserData(user)" ng-if="!user.loaded && !user.analyzing">
+                      Load
+                      </md-button>                      
+                    </div>
+                </div>    
+
+                <!--Load More Button-->
+
+                <div layout="row" layout-align="start center" class="list-item">
+                   <div flex="10"></div>
+                   <div flex="70">
+                    <div ng-show="nextIterator">
+                      <md-button class="md-raised" ng-click="loadMore()">View more contacts</md-button>
+                    </div>   
+                   </div>
+                   <div flex="20">
+                   </div>               
+                </div>
+            </md-content>    
+        </div>
+
+
+        <!--if user not logged in-->
+        <div ng-show="!isLoggedIn()">
+            <md-content layout-padding flex>
+
+              <div layout="column" layout-align="center center">
+                <h1 class="md-display-2">A traveler's past is another traveler's future</h1>
+                <md-button class="md-raised md-accent" ng-href="{{authLink}}">Login with Instagram</md-button>
+              </div>
+            </md-content>
+
+        </div>
+
+        <div error></div>
+
+    </div>
+</md-content>

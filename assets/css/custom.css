@@ -1,0 +1,78 @@
+.pin {
+	width: 20px;
+	height: 30px;
+}
+
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+    cursor: pointer;
+}
+
+.list-item {
+	height: auto;
+	min-height: 88px;
+}
+
+
+.tile-card {
+	box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+	overflow: hidden;
+	width: 100%;
+	height: auto;
+}
+
+.tile-figure {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+}
+
+.tile-figure-container {
+	padding: 5px;
+}
+
+.tile-figure-container img {
+   width: 100%;
+   height: auto;
+} 
+
+.tile-footer {
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.figure-header {
+	text-transform: uppercase;
+	position: absolute;
+	left: 5px;
+	right: 5px;
+	color: white;
+	background:-moz-linear-gradient(top,rgba(0,0,0,.7) 0,rgba(0,0,0,.5) 29%,rgba(0,0,0,.2) 74%,rgba(0,0,0,0) 99%,rgba(255,255,255,0) 100%);	
+	background:-moz-linear-gradient(top,rgba(0,0,0,.7) 0,rgba(0,0,0,.5) 29%,rgba(0,0,0,.2) 74%,rgba(0,0,0,0) 99%,rgba(255,255,255,0) 100%);
+	background:-webkit-linear-gradient(top,rgba(0,0,0,.7) 0,rgba(0,0,0,.5) 29%,rgba(0,0,0,.2) 74%,rgba(0,0,0,0) 99%,rgba(255,255,255,0) 100%);
+	background:-o-linear-gradient(top,rgba(0,0,0,.7) 0,rgba(0,0,0,.5) 29%,rgba(0,0,0,.2) 74%,rgba(0,0,0,0) 99%,rgba(255,255,255,0) 100%);
+	background:-ms-linear-gradient(top,rgba(0,0,0,.7) 0,rgba(0,0,0,.5) 29%,rgba(0,0,0,.2) 74%,rgba(0,0,0,0) 99%,rgba(255,255,255,0) 100%);	
+}
+
+.figure-header img {
+	min-width: 20px;
+	max-width: 20px;
+	height: 30px;
+	padding: 10px;
+}
+
+.toolbar-user-avatar {
+	border-radius: 50%;
+	height: 40px;
+	width: 40px;
+}
+
+.chip {
+    display: inline-block;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 25px;
+    background-color: #f1f1f1;
+}
+

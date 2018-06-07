@@ -1,0 +1,15 @@
+<md-toolbar ng-controller="navController" class="md-primary md-hue-1">
+      <div class="md-toolbar-tools">
+        <md-button aria-label="Memento" class="md-accent" ui-sref="index">
+          Memento
+        </md-button>
+        <div class="md-caption" ng-show="isLoggedIn()">
+        </div>
+        <span flex></span>
+        <span ng-show="isLoggedIn()">
+            <md-button class="md-accent" aria-label="Sign out" ng-click="signOut()">
+              Log out
+            </md-button>
+        </span>
+      </div>
+</md-toolbar>

@@ -1,0 +1,48 @@
+<md-content layout-padding>
+    <div ng-init="init()" flex layout-fill ng-cloak>
+        
+
+            <div ng-if="loaded">
+                    <div layout="row" layout-align="start center" class="list-item">
+                          <div flex="10"></div>
+                          <div flex="20">
+                             <div layout="row" layout-align="start center">
+                                <div style="margin-right: 10px">
+                                  <img class="toolbar-user-avatar" ng-src="{{user.profile_picture}}"/>
+                                </div>
+                                <div layout="column">
+                                   <div class="md-body-1">Mementos of</div>                              
+                                  <div class="md-body-2">{{user.username}}</div>
+                                  <!-- <div class="md-body-1">{{user.full_name}}</div> -->
+                                </div>
+                             </div>                                                
+                          </div>                  
+                          <div flex="50" layout-align="center center">
+                          </div>
+                          <div flex="20">
+                            <md-button ui-sref="index">
+                            Change
+                            </md-button>
+                          </div>
+                    </div>
+          
+                      <div layout="column" layout-align="center">
+                          <div layout-xs="column" layout="row" layout-wrap layout-align="center start"> 
+                              <md-card ng-repeat="destination in user.destinations" style="max-width: 320px; min-width: 320px;" ng-click="viewDestination($index)">
+                                <img class="md-card-image" ng-src="{{getDestinationMapUrl(destination, 320, 320)}}" alt="Map of destination {{$index}}">                       
+                                <md-card-title>
+                                  <md-card-title-text>
+                                    <span class="md-title">{{destination[0].names[0].name}}</span>
+                                    <span class="md-subhead">{{destination[0].period.name}}</span>
+                                  </md-card-title-text>
+                                </md-card-title>                                 
+                                <md-card-content>
+                                </md-card-content>                       
+                              </md-card>
+                          </div>                
+                      </div> 
+              </div> 
+
+    </div>
+
+</md-content>

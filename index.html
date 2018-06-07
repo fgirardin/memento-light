@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="instagramApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Memento</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-cookies.min.js"></script>    
+
+    <script src="app/dependencies/angular-ui-router.min.js" type="text/javascript"></script>
+    <script src="app/dependencies/unique.js" type="text/javascript"></script>
+    <script src="app/dependencies/instagram.js" type="text/javascript"></script>
+    <script src="app/dependencies/google.js" type="text/javascript"></script>
+    <script src="app/dependencies/authentication.js" type="text/javascript"></script>
+    <script src="app/dependencies/directives.js" type="text/javascript"></script>
+    <script src="app/dependencies/jDBSCAN.js" type="text/javascript"></script>
+    <script src="app/dependencies/lodash.min.js" type="text/javascript"></script>
+    <script src="app/app.js" type="text/javascript"></script>
+    <script src="app/config.js" type="text/javascript"></script>
+    <script src="app/controllers.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+    <link href="assets/css/custom.css" media="screen" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+</head>
+<body ng-controller="AppController">
+
+<div ng-include="'views/common/header.html'"></div>
+
+<div class="md-content">
+
+    <div ui-view></div>
+
+</div>
+</body>
+</html>

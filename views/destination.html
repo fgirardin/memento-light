@@ -1,0 +1,128 @@
+<md-content>
+    <div ng-init="init()">
+
+                <md-progress-linear md-mode="indeterminate" ng-show="loading"></md-progress-linear>      
+
+                <div layout="row" layout-align="start center" class="list-item">
+                      <div flex="10"></div>
+                      <div flex="20" style="cursor: pointer;" ui-sref="user({userId: user.id, userName: user.username})">
+                        
+                         <div layout="row" layout-align="start center">
+                            <i class="material-icons">chevron_left</i>
+                            <div layout="column">
+                              <div class="md-body-2">{{user.username}}</div>
+                            </div>
+                         </div>                                                
+                        
+                      </div>                  
+                      <div flex="50">
+                        <div class="md-display-3">
+                          {{destination[0].names[0].name}}
+                        </div>
+                        <div class="md-subhead">
+                          {{destination[0].period.name}}
+                        </div>
+                      </div>
+                      <div flex="20">
+                        <md-button class="md-icon-button" aria-label="Share" ng-disabled="true">
+                            <md-icon><i class="material-icons">share</i></md-icon>
+                        </md-button>                          
+                        <md-button class="md-icon-button" aria-label="Download" ng-disabled="true">
+                            <md-icon><i class="material-icons">file_download</i></md-icon>
+                        </md-button>                          
+                      </div>
+                </div>    
+
+
+            <div ng-hide="loading">   
+              <div ng-repeat="chapter in destination">
+
+
+                <div layout="row">
+                  <div flex="100">
+                      <img layout-fill class="md-card-image" ng-src="{{getMapUrl(chapter.locations, 1280, 320)}}" alt="{{chapter.names[0].name}}">
+                  </div>
+                </div>
+
+                <div layout="row" style="background-color: rgb(255,64,129); color: white; padding-top: 5px; padding-bottom: 5px; margin-bottom: 10px;" layout-align="start center">
+                    <div flex="10"></div>
+                    <div flex="20">
+                       <div layout="row" layout-align="start center">
+                          <div style="margin-right: 10px">
+                            <img class="toolbar-user-avatar" ng-src="{{user.profile_picture}}"/>
+                          </div>
+                          <div layout="column">
+                            <div class="md-body-2">{{user.username}}</div>
+                            <div class="md-body-1">{{user.full_name}}</div>
+                          </div>
+                        </div>  
+                    </div>                  
+                    <div flex="50" layout-align="center center">
+                        <div layout="column">
+                          <div ng-if="chapter.names[1].name!=null">
+                            <div class="md-caption">
+                              {{chapter.names[0].name}}
+                            </div>
+                            <div class="md-headline" ng-if="chapter.names[1].name!=null">
+                                {{chapter.names[1].name}}
+                            </div>
+                          </div>  
+                          <div ng-if="chapter.names[1].name==null">
+                            <div class="md-headline">
+                              {{chapter.names[0].name}}
+                            </div>
+                          </div>
+                            <!-- <div class="md-caption">{{chapter.period.name}}</div>  -->
+                        </div>
+                    </div>
+                    <div flex="20">
+                    </div>
+                </div>
+
+           
+                <div layout="row" layout-align="center start" style="margin-bottom: 50px;">
+                  <div flex="80">
+                    <md-grid-list
+                              md-cols-xs="2" md-cols-sm="3" md-cols-md="4" md-cols-gt-md="5"
+                              md-row-height-gt-md="4:5" md-row-height="4:5"
+                              md-gutter="20px" md-gutter-gt-sm="30px">
+
+                        <md-grid-tile 
+                            md-rowspan="{{location.rowspan}}" md-colspan="{{location.colspan}}" md-colspan-sm="{{location.colspan}}" md-colspan-xs="{{location.colspan}}" ng-repeat="location in chapter.locations" class="tile-card">     
+                          <figure style="display: block;">  
+                            <div layout="column" layout-align="start start">
+                              <div class="tile-figure">
+                                  <div class="tile-figure-container">
+                                    <div class="figure-header">
+                                         <div layout="row" layout-align="space-between">
+                                            <div class="md-body-2" style="font-weight: 900; padding: 10px; line-height: 14px; letter-spacing: 0em; font-size: 12px;">{{location.name}}</div>
+                                            <img ng-src="/assets/img/pin-s-{{location.pin_id}}.png">
+                                         </div>
+                                    </div>                           
+                                    <img ng-src="{{location.images[0].images.low_resolution.url}}">
+                                  </div>
+                              </div>                                           
+                              <div class="tile-footer">
+                                <div class="md-caption">{{getShortText(location.images[0].caption.text, 75)}}</div>
+                              </div>
+                            </div>
+                          </figure>
+                        </md-grid-tile>
+                    </md-grid-list> 
+                  </div>  
+                </div>
+              </div>
+  
+            <div error></div>
+
+                <div layout="row" layout-align="start center" class="list-item">
+                      <div flex="10"></div>
+                      <div flex="80">
+                        <div class="md-body">This is memento</div>                                             
+                      </div>                  
+                      <div flex="10">
+                      </div>
+                </div>                
+    </div>
+  
+</md-content>
