@@ -4,7 +4,7 @@ var app = angular.module('instagramApp', ['instagramApp.controllers', 'instagram
 app.constant('instagramApiConfig', {
         apiUrl: 'https://api.instagram.com/v1/',
         clientId: '8e0c010c39dc44f1b44243fd69d3d6ef',
-        callback: 'http://alpha.memento.li/callback.html'
+        callback: 'http://light.memento.li/callback.html'
     }
 );
 
